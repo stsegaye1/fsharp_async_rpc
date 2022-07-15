@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netstandard2.0</TargetFramework>
     <OtherFlags Condition="'$(JENGA_ROOT_PATH)' == ''">--sig:ModuleSignatures.generated</OtherFlags>
     <OtherFlags Condition="'$(JENGA_ROOT_PATH)' != ''">--sig:ModuleSignatures.jenga.generated</OtherFlags>
-    <OtherFlags>--warnaserror+ --warnon:1182,3218 $(OtherFlags)</OtherFlags>
+    <OtherFlags>--mlcompatibility --warnaserror+ --warnon:1182,3218 $(OtherFlags)</OtherFlags>
     <EmbedAllSources>true</EmbedAllSources>
     <DebugType>embedded</DebugType>
   </PropertyGroup>
@@ -25,10 +25,11 @@
     <Compile Include="Bin_prot_reader.fs" />
     <Compile Include="Rpc.fsi" />
     <Compile Include="Rpc.fs" />
+    <Compile Include="Versioned_rpc.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\bin_prot\src\Bin_prot.fsproj" />
+    <ProjectReference Include="..\..\fsharp_bin_prot\src\Bin_prot.fsproj" />
     <ProjectReference Include="..\generated\Async_rpc.Bin_prot_generated_types.fsproj" />
-    <ProjectReference Include="..\..\core_kernel\src\Core_kernel.fsproj" />
+    <ProjectReference Include="..\..\fsharp_core_kernel\src\Core_kernel.fsproj" />
   </ItemGroup>
 </Project>

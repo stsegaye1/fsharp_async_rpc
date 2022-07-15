@@ -1,0 +1,720 @@
+#light
+
+
+
+
+
+namespace Async_rpc.Protocol
+    
+    module Rpc_result =
+        
+        [<Struct>]
+        type 'a t =
+            'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_result.t
+    
+    module Message =
+        
+        type 'a t =
+            'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Message.needs_length
+        
+        val bin_writer_needs_length:
+          ('a Bin_prot.Type_class.writer
+             -> 'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Message.needs_length Bin_prot.Type_class.writer)
+        
+        val bin_reader_needs_length:
+          ('a Bin_prot.Type_class.reader
+             -> 'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Message.needs_length Bin_prot.Type_class.reader)
+        
+        val bin_writer_nat0_t:
+          Bin_prot.Nat0.t Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Message.needs_length Bin_prot.Type_class.writer
+        
+        val bin_reader_nat0_t:
+          Bin_prot.Nat0.t Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Message.needs_length Bin_prot.Type_class.reader
+    
+    module Query =
+        
+        module Id =
+            
+            [<Struct>]
+            type t =
+                Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Query_id.t
+            
+            val create: (unit -> int64)
+        
+        type 'a t =
+            'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Query.needs_length
+        
+        val map_data: 'a t -> f: ('a -> 'b) -> 'b t
+    
+    module Response =
+        
+        type 'a t =
+            'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Response.needs_length
+        
+        val map_data: 'a t -> f: ('a -> 'b) -> 'b t
+    
+    module Stream_query =
+        
+        type 'a t =
+            'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_query.needs_length
+        
+        val bin_reader_needs_length:
+          ('a Bin_prot.Type_class.reader
+             -> 'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_query.Needs_length_generated_0.t Bin_prot.Type_class.reader)
+        
+        val bin_writer_needs_length:
+          ('a Bin_prot.Type_class.writer
+             -> 'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_query.Needs_length_generated_0.t Bin_prot.Type_class.writer)
+        
+        val bin_size_needs_length:
+          (('a -> int)
+           -> 'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_query.Needs_length_generated_0.t
+             -> int)
+        
+        val bin_writer_nat0_t:
+          Bin_prot.Nat0.t Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_query.needs_length Bin_prot.Type_class.writer
+        
+        val bin_reader_nat0_t:
+          Bin_prot.Nat0.t Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_query.needs_length Bin_prot.Type_class.reader
+    
+    module Stream_initial_message =
+        
+        type ('response,'error) t =
+            ('response,'error)
+              Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_initial_message.t
+        
+        val bin_reader_t:
+          ('a Bin_prot.Type_class.reader -> 'b Bin_prot.Type_class.reader
+             -> ('a,'b)
+                  Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_initial_message.t Bin_prot.Type_class.reader)
+        
+        val bin_writer_t:
+          ('a Bin_prot.Type_class.writer -> 'b Bin_prot.Type_class.writer
+             -> ('a,'b)
+                  Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_initial_message.t Bin_prot.Type_class.writer)
+    
+    module Stream_response_data =
+        
+        type 'a t =
+            'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_response_data.needs_length
+        
+        val bin_writer_needs_length:
+          ('a Bin_prot.Type_class.writer
+             -> 'a Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_response_data.Needs_length_generated_0.t Bin_prot.Type_class.writer)
+        
+        val bin_writer_nat0_t:
+          Bin_prot.Nat0.t Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_response_data.needs_length Bin_prot.Type_class.writer
+        
+        val bin_reader_nat0_t:
+          Bin_prot.Nat0.t Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Stream_response_data.needs_length Bin_prot.Type_class.reader
+    
+    module Rpc_error =
+        
+        type t =
+            Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_error.T.t
+        
+        module Unimplemented_rpc =
+            
+            type t =
+                Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_error.T.Generated_0.t
+        
+        val bin_io_exn:
+          location: string -> exn: exn
+            -> Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_error.T.t
+        
+        val to_error: t: t -> Core_kernel.Error.t
+    
+    module Response_handler =
+        
+        module Result =
+            
+            type t =
+                | Keep
+                | Remove of unit Rpc_result.t
+        
+        type t =
+            Bin_prot.Nat0.t Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Response.needs_length
+            -> Bin_prot.Common.buf -> Bin_prot.Common.pos_ref -> Result.t
+    
+    module Rpc_tag =
+        
+        type t =
+            Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_tag.t
+    
+    module Krb =
+        
+        module Test_mode_protocol =
+            
+            module Ack =
+                
+                [<Struct>]
+                type t =
+                    Bin_prot_generated_types.Lib.Krb.Public.Src.Test_mode_protocol.Ack.t
+                
+                val bin_reader_t:
+                  Result<unit,
+                         Core_kernel.Bin_prot_generated_types.Lib.Dotnet.Core_with_dotnet.Src.Error.T.t> Bin_prot.Type_class.reader
+                
+                val bin_writer_t:
+                  Result<unit,
+                         Core_kernel.Bin_prot_generated_types.Lib.Dotnet.Core_with_dotnet.Src.Error.T.t> Bin_prot.Type_class.writer
+            
+            module Syn =
+                
+                type t =
+                    Bin_prot_generated_types.Lib.Krb.Public.Src.Test_mode_protocol.Syn.t
+                
+                val bin_reader_t:
+                  Bin_prot_generated_types.Lib.Krb.Public.Src.Principal.Stable.Name.V1.T.t Bin_prot.Type_class.reader
+                
+                val bin_writer_t:
+                  Bin_prot_generated_types.Lib.Krb.Public.Src.Principal.Stable.Name.V1.T.t Bin_prot.Type_class.writer
+        
+        module Principal =
+            
+            module Name =
+                
+                module Stable =
+                    
+                    module V1 =
+                        
+                        type t =
+                            Bin_prot_generated_types.Lib.Krb.Public.Src.Principal.Stable.Name.V1.T.t
+
+namespace Async_rpc
+    
+    module Transport =
+        
+        module Close_reason =
+            
+            type t =
+                | By_user
+                | Error of Core_kernel.Error.t
+            
+            val error: s: string -> t
+            
+            val errorf: Printf.StringFormat<'a,t> -> 'a
+        
+        module Open_state =
+            
+            type t =
+                | Open
+                | Close_started of Close_reason.t
+            
+            val is_open: t -> bool
+        
+        module Send_result =
+            
+            type message_too_big =
+                {
+                  size: int
+                  max_message_size: int
+                }
+            
+            type 'a t =
+                | Sent of 'a
+                | Close_started of Close_reason.t
+                | Message_too_big of message_too_big
+                | Other_error of Core_kernel.Error.t
+            
+            val to_or_error: 'a t -> Result<'a,Core_kernel.Error.t>
+        
+        module Handler_result =
+            
+            type 'a t =
+                | Stop of 'a
+                | Continue
+        
+        module With_limit =
+            
+            val bad_message_size_error: Core_kernel.Error.t
+            
+            type 'a t =
+                {
+                  t: 'a
+                  max_message_size: int
+                }
+            
+            val create:
+              t: 'a -> args: {| max_message_size: int |}
+                -> 'a t Core_kernel.Or_error.t
+            
+            val message_size_ok: t: 'a t -> payload_len: int64 -> bool
+            
+            val check_message_size:
+              t: 'a t -> payload_len: int64 -> int Core_kernel.Or_error.t
+        
+        module Header =
+            
+            val header_length: int
+            
+            val read_payload_length: buffer: byte[] -> int64
+            
+            val write_payload_length:
+              writer: System.IO.BinaryWriter -> payload_len: int -> unit
+        
+        module Reader =
+            
+            type t =
+                {
+                  stream: System.IO.Stream With_limit.t
+                  length_buffer: byte[]
+                }
+            
+            module Error =
+                
+                type t =
+                    | End_of_stream
+                    | Other of Core_kernel.Error.t
+                    | Closed
+                
+                val to_error: t -> Core_kernel.Error.t
+                
+                val other: s: string -> t
+            
+            val try_read: f: (unit -> Result<'a,Error.t>) -> Result<'a,Error.t>
+            
+            val create:
+              stream: System.IO.Stream
+              -> max_message_size: {| max_message_size: int |}
+                -> t Core_kernel.Or_error.t
+            
+            val read_bytes:
+              stream: System.IO.Stream -> buffer: byte[] -> len: int
+              -> on_end_of_batch: (unit -> unit) -> Result<unit,Error.t>
+            
+            val read_forever:
+              t -> on_message: (byte[] -> 'a Handler_result.t)
+              -> on_end_of_batch: (unit -> unit) -> Result<'a,Error.t>
+            
+            val read_one_message_bin_prot:
+              t -> 'a Bin_prot.Type_class.reader
+                -> ('a,Error.t) Core_kernel.Result.t
+            
+            module For_testing =
+                
+                val consume_one_transport_message:
+                  t -> (Bin_prot.Buffer.Buffer<byte> -> int ref -> unit) list
+                    -> unit
+        
+        module Writer =
+            
+            module Message =
+                
+                type t =
+                    | Close of Close_reason.t
+                    | Flush of System.Threading.Tasks.TaskCompletionSource<unit>
+                    | Message of byte[]
+            
+            type t' =
+                {
+                  to_send:
+                    Message.t Core_kernel.Blocking_queue.Writer.t With_limit.t
+                  mutable close_finished_callback: Close_reason.t -> unit
+                  mutable open_state: Open_state.t
+                }
+            
+            type t = | T of t' Core_kernel.Sequencer.t
+            
+            val close_and_get_reason:
+              t -> reason: Close_reason.t -> Close_reason.t
+            
+            val close: t -> unit
+            
+            val is_close_started: t -> bool
+            
+            val try_write:
+              writer: System.IO.BinaryWriter -> buffer: byte[]
+                -> Result<unit,Core_kernel.Error.t>
+            
+            val background_writer_loop:
+              t -> queue_reader: Message.t Core_kernel.Blocking_queue.Reader.t
+              -> stream: System.IO.Stream -> unit -> unit
+            
+            val create:
+              stream: System.IO.Stream -> args: {| max_message_size: int |}
+                -> t Core_kernel.Or_error.t
+            
+            val send_bin_prot:
+              t -> 'a Bin_prot.Type_class.writer -> 'a -> unit Send_result.t
+            
+            val send_bin_prot_exn:
+              t -> 'a Bin_prot.Type_class.writer -> 'a -> unit
+            
+            val set_close_finished_callback:
+              t -> (Close_reason.t -> unit) -> unit
+            
+            module For_testing =
+                
+                val wait_for_flushed: t -> unit
+        
+        val default_max_message_size: int
+        
+        type t =
+            {
+              writer: Writer.t
+              reader: Reader.t
+            }
+        
+        val create:
+          System.IO.Stream -> {| max_message_size: int |}
+            -> (t,Core_kernel.Error.t) Core_kernel.Result.t
+        
+        val create_with_default_max_message_size:
+          System.IO.Stream -> (t,Core_kernel.Error.t) Core_kernel.Result.t
+        
+        val stream: t -> System.IO.Stream
+        
+        module For_testing =
+            
+            val bad_message_size_error: Core_kernel.Error.t
+
+namespace Async_rpc
+    
+    module Known_protocol =
+        
+        type 'a t =
+            | Krb of 'a
+            | Krb_test_mode
+            | Rpc
+        
+        module With_krb_support =
+            
+            type t = (Transport.t -> unit Core_kernel.Or_error.t) t
+        
+        val all: unit t list
+        
+        val magic_word: _arg1: 'a t -> string
+        
+        val gen_magic_number: word: seq<char> -> int64
+        
+        val magic_number: 'a t -> int64
+        
+        val by_magic_number: Map<int64,unit t>
+
+namespace Async_rpc
+    
+    module Protocol_version_header =
+        
+        module Protocol_kind =
+            
+            type t = unit Known_protocol.t
+        
+        type t = | T of Bin_prot_generated_types.Bounded_int_list.t
+        
+        val create_exn:
+          'a Known_protocol.t -> {| supported_versions: int64 list |} -> t
+        
+        val bin_reader_t: t Bin_prot.Type_class.reader
+        
+        val bin_writer_t: t Bin_prot.Type_class.writer
+        
+        val get_protocol:
+          t -> Result<(unit Known_protocol.t option * Set<int64>),
+                      Core_kernel.Error.t>
+        
+        val negotiate_allowing_legacy_peer:
+          us: t -> peer: t -> (int64,Core_kernel.Error.t) Core_kernel.Result.t
+        
+        val v1: 'a Known_protocol.t -> t
+        
+        val handshake_and_negotiate_version:
+          t -> Transport.t -> (int64,Core_kernel.Error.t) Core_kernel.Result.t
+
+namespace Async_rpc
+    
+    module Writer_with_length =
+        
+        type 'a t = 'a Bin_prot.Type_class.writer
+        
+        val of_writer: 'a t -> 'a t
+        
+        val of_type_class: 'a Bin_prot.Type_class.t -> 'a t
+
+namespace Async_rpc
+    
+    module Connection =
+        
+        type t' =
+            {
+              mutable last_seen_alive: System.DateTime
+              mutable open_state: Transport.Open_state.t
+              writer: Transport.Writer.t
+              open_queries:
+                System.Collections.Generic.Dictionary<Protocol.Query.Id.t,
+                                                      Protocol.Response_handler.t>
+              time_source: Core_kernel.Time_source.t
+            }
+        
+        type t = | T of t' Core_kernel.Sequencer.t
+        
+        val update_last_seen_alive: t -> unit
+        
+        val writer: t: t' -> Result<Transport.Writer.t,Transport.Close_reason.t>
+        
+        val expect_version:
+          version: int64 -> expected: int64 -> Result<unit,Core_kernel.Error.t>
+        
+        val rpc_handshake:
+          transport: Transport.t
+            -> (unit,Core_kernel.Error.t) Core_kernel.Result.t
+        
+        val do_handshake:
+          transport: Transport.t
+          -> protocol: (Transport.t
+                          -> (unit,Core_kernel.Error.t) Core_kernel.Result.t) Known_protocol.t
+            -> (unit,Core_kernel.Error.t) Core_kernel.Result.t
+        
+        val default_handshake_timeout_ms: int
+        
+        val with_set_read_timeout:
+          stream: System.IO.Stream -> f: (unit -> 'a) -> 'a
+        
+        val do_handshake_with_timeout:
+          transport: Transport.t
+          -> protocol: (Transport.t
+                          -> (unit,Core_kernel.Error.t) Core_kernel.Result.t) Known_protocol.t
+            -> (unit,Core_kernel.Error.t) Core_kernel.Result.t
+        
+        val remove_response_handler:
+          t: t' -> response_id: Protocol.Query.Id.t -> unit
+        
+        val dispatch:
+          t -> Protocol.Response_handler.t option -> 'a Writer_with_length.t
+          -> 'a Protocol.Query.t -> unit Core_kernel.Or_error.t
+        
+        val handle_response:
+          t -> response: Bin_prot.Nat0.t Protocol.Response.t
+          -> read_buffer: Bin_prot.Common.buf
+          -> read_buffer_pos_ref: Bin_prot.Common.pos_ref
+            -> Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_error.T.t Transport.Handler_result.t
+        
+        val handle_msg:
+          t: t
+          -> msg: Bin_prot.Nat0.t Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Message.needs_length
+          -> read_buffer: Bin_prot.Common.buf
+          -> read_buffer_pos_ref: Bin_prot.Common.pos_ref
+            -> Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_error.T.t Transport.Handler_result.t
+        
+        val on_message:
+          t: t -> message: byte[] -> string Transport.Handler_result.t
+        
+        val cleanup: t: t' -> reason: Transport.Close_reason.t -> unit
+        
+        val close: t -> unit
+        
+        val open_state: t -> Transport.Open_state.t
+        
+        val heartbeat_timeout: System.TimeSpan
+        
+        val send_heartbeat_every: System.TimeSpan
+        
+        val heartbeat_now: t -> unit Core_kernel.Or_error.t
+        
+        val heartbeat_periodically: t -> unit
+        
+        val close_outstanding_queries:
+          open_queries: seq<System.Collections.Generic.KeyValuePair<Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Query_id.t,
+                                                                    Protocol.Response_handler.t>>
+            -> unit
+        
+        val run_after_handshake: t -> reader: Transport.Reader.t -> unit
+        
+        val create:
+          System.IO.Stream -> Core_kernel.Time_source.t
+          -> (Transport.t -> (unit,Core_kernel.Error.t) Core_kernel.Result.t) Known_protocol.t
+          -> {| max_message_size: int |}
+          -> (Result<t,Core_kernel.Error.t> -> unit) -> unit
+        
+        module For_testing =
+            
+            val create_wait_for_connection:
+              System.IO.Stream -> Core_kernel.Time_source.t
+              -> (Transport.t -> (unit,Core_kernel.Error.t) Core_kernel.Result.t) Known_protocol.t
+              -> {| max_message_size: int |} -> Result<t,Core_kernel.Error.t>
+            
+            val open_queries: t -> Protocol.Query.Id.t list
+            
+            val send_heartbeat_every: System.TimeSpan
+            
+            val heartbeat_timeout: System.TimeSpan
+
+namespace Async_rpc
+    
+    module Bin_prot_reader =
+        
+        type 'a t = 'a Bin_prot.Type_class.reader
+        
+        val read_and_verify_length:
+          'a t -> add_len: ('a -> int) option -> Bin_prot.Common.buf
+          -> Bin_prot.Common.pos ref -> len: Bin_prot.Common.pos
+          -> location: string
+            -> Result<'a,
+                      Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_error.T.t>
+
+namespace Async_rpc
+    
+    module Rpc =
+        
+        type ('query,'response) t =
+            {
+              tag: Protocol.Rpc_tag.t
+              version: int
+              bin_query: 'query Bin_prot.Type_class.t
+              bin_response: 'response Bin_prot.Type_class.t
+            }
+        
+        val create:
+          {| name: string; version: int |}
+          -> bin_query: 'query Bin_prot.Type_class.t
+          -> bin_response: 'response Bin_prot.Type_class.t
+            -> ('query,'response) t
+        
+        val dispatch:
+          ('query,'response) t -> Connection.t -> 'query
+          -> (('response,
+               Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Rpc_error.T.t)
+                Core_kernel.Result.t -> unit) -> unit Core_kernel.Or_error.t
+    
+    module Pipe_message =
+        
+        type 'a t =
+            | Update of 'a
+            | Closed_by_remote_side
+            | Closed_from_error of Core_kernel.Error.t
+    
+    module Streaming_rpc =
+        
+        type ('query,'initial_response,'update_response,'error_response) t =
+            {
+              tag: Protocol.Rpc_tag.t
+              version: int
+              bin_query: 'query Bin_prot.Type_class.t
+              bin_initial_response: 'initial_response Bin_prot.Type_class.t
+              bin_update_response: 'update_response Bin_prot.Type_class.t
+              bin_error_response: 'error_response Bin_prot.Type_class.t
+            }
+        
+        val create:
+          args: {| name: string; version: int |}
+          -> bin_query: 'a Bin_prot.Type_class.t
+          -> bin_initial_response: 'b Bin_prot.Type_class.t
+          -> bin_update_response: 'c Bin_prot.Type_class.t
+          -> bin_error_response: 'd Bin_prot.Type_class.t -> ('a,'b,'c,'d) t
+        
+        val abort:
+          t: ('a,'b,'c,'d) t -> conn: Connection.t
+          -> id: Bin_prot_generated_types.Lib.Async_rpc_kernel.Src.Protocol.Query_id.t
+            -> unit Core_kernel.Or_error.t
+        
+        module Response_state =
+            
+            module Update_handler =
+                
+                type 'a t = 'a Pipe_message.t -> unit
+            
+            module Initial =
+                
+                type ('query,'initial,'update,'error) rpc =
+                    ('query,'initial,'update,'error) t
+                
+                type ('query,'initial,'update,'error) t =
+                    {
+                      rpc: ('query,'initial,'update,'error) rpc
+                      query_id: Protocol.Query.Id.t
+                      make_update_handler:
+                        'initial -> 'update Pipe_message.t -> unit
+                      initial_result_handler:
+                        Result<Result<'initial,'error>,Protocol.Rpc_error.t>
+                          -> unit
+                      connection: Connection.t
+                    }
+            
+            module State =
+                
+                type ('query,'initial,'update,'error) t =
+                    | Waiting_for_initial_response of
+                      ('query,'initial,'update,'error) Initial.t
+                    | Writing_updates of
+                      'update Bin_prot.Type_class.reader *
+                      'update Update_handler.t
+            
+            type ('query,'initial,'update,'error) t =
+                { mutable state: ('query,'initial,'update,'error) State.t }
+        
+        val read_error:
+          handler: 'a Response_state.Update_handler.t
+          -> err: Protocol.Rpc_error.t -> Protocol.Response_handler.Result.t
+        
+        val eof:
+          handler: 'a Response_state.Update_handler.t
+            -> Protocol.Response_handler.Result.t
+        
+        val response_handler:
+          initial_state: ('a,'b,'c,'d) Response_state.Initial.t
+            -> Protocol.Response_handler.t
+        
+        val dispatch_gen:
+          t: ('a,'b,'c,'d) t -> conn: Connection.t -> query: 'a
+          -> initial_result_handler: (Result<Result<'b,'d>,Protocol.Rpc_error.t>
+                                        -> unit)
+          -> make_update_handler: ('b -> 'c Pipe_message.t -> unit)
+            -> unit Core_kernel.Or_error.t
+        
+        val dispatch_iter:
+          t: ('a,'b,'c,'d) t -> conn: Connection.t -> query: 'a
+          -> f_initial: (Result<Result<'b,'d>,Protocol.Rpc_error.t> -> unit)
+          -> f_updates: ('b -> 'c Pipe_message.t -> unit)
+            -> unit Core_kernel.Or_error.t
+    
+    module Pipe_rpc =
+        
+        type ('query,'response,'error) t =
+            | T of ('query,unit,'response,'error) Streaming_rpc.t
+        
+        val create:
+          {| name: string; version: int |}
+          -> bin_query: 'query Bin_prot.Type_class.t
+          -> bin_response: 'response Bin_prot.Type_class.t
+          -> bin_error: 'error Bin_prot.Type_class.t
+            -> ('query,'response,'error) t
+        
+        val dispatch_iter:
+          ('query,'response,'error) t -> Connection.t -> 'query
+          -> initial_handler: (Result<Result<unit,'error>,Protocol.Rpc_error.t>
+                                 -> unit)
+          -> update_handler: 'response Streaming_rpc.Response_state.Update_handler.t
+            -> unit Core_kernel.Or_error.t
+
+namespace Async_rpc.Versioned_rpc
+    
+    module Menu =
+        
+        val menu_rpc: (unit,(string * int64) list) Rpc.t
+        
+        type t = (string * int64) list
+        
+        val with_menu:
+          connect: Connection.t -> callback: (t -> unit)
+            -> unit Core_kernel.Or_error.t
+        
+        val supported_rpcs: t: t -> t
+        
+        val supported_versions: t: t -> rpc_name: string -> Set<int64>
+    
+    module Connection_with_menu =
+        
+        type t =
+            {
+              connection: Connection.t
+              menu: Menu.t
+            }
+        
+        val with_:
+          connection: Connection.t -> callback: (t -> unit)
+            -> unit Core_kernel.Or_error.t
+        
+        val get_menu: t: t -> Menu.t
+        
+        val get_connection: t: t -> Connection.t
+

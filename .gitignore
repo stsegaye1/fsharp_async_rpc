@@ -3,3 +3,7 @@ _build
 *.merlin
 _opam
 
+**/[Bb]in/
+**/[Oo]bj/
+**/[Ll]og/
+
