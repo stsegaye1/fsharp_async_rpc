@@ -570,6 +570,8 @@ namespace Async_rpc
           -> bin_response: 'response Bin_prot.Type_class.t
             -> ('query,'response) t
         
+        val rpc_info: ('query,'response) t -> string * int
+        
         val dispatch:
           ('query,'response) t -> Connection.t -> 'query
           -> (('response,

@@ -16,6 +16,9 @@ module Rpc =
       bin_query = bin_query
       bin_response = bin_response }
 
+  let rpc_info t : (string*int) =
+    t.tag,t.version
+
   let dispatch t conn query callback =
     let response_handler (response : _ Response.t) read_buffer read_buffer_pos_ref =
       let response =
@@ -45,6 +48,7 @@ module Rpc =
         version = int64 t.version
         id = query_id
         data = query } in
+
 
     Connection.dispatch conn (Some response_handler) t.bin_query.writer query
 

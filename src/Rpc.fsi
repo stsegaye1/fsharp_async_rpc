@@ -19,6 +19,8 @@ module Rpc =
     (Result<'response, Rpc_error.t> -> unit) ->
     unit Or_error.t
 
+  val rpc_info : t<'query, 'response> -> string * int
+
 module Pipe_message =
   type 'a t =
     | Update of 'a
