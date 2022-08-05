@@ -42,6 +42,9 @@ module Menu =
 
         set_of_versions
 
+    module For_testing = 
+        let create (t:t) : t = t
+
 
 module Connection_with_menu = 
     type t = {
@@ -58,5 +61,4 @@ module Connection_with_menu =
     (*when calling with_ call get_menu or get_connection in callback given conn_w_menu*)
     let get_menu t = t.menu
     let get_connection t = t.connection
-
     

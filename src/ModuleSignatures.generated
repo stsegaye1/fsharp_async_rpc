@@ -703,6 +703,10 @@ namespace Async_rpc.Versioned_rpc
         val supported_rpcs: t: t -> t
         
         val supported_versions: t: t -> rpc_name: string -> Set<int64>
+        
+        module For_testing =
+            
+            val create: t: t -> t
     
     module Connection_with_menu =
         
